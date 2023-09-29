@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface IUserRepository extends MongoRepository<User, ObjectId> {
     public Optional<User> getUserByEmail(String Email);
     public Optional<User> getUserByPhone(String number);
+    public  Boolean deleteByEmail(String email);
 }
