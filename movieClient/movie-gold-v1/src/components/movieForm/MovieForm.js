@@ -54,11 +54,12 @@ const MovieForm = ({ onClose }) => {
             if(response.ok){
                 onClose();
             }else{
-                console.error("Failed to add Movie");
+                console.error(`Failed to add Movie. Status code: ${response.status}`);
+                console.error("Response:", response);
             }
 
         } catch (error) {
-            console.log(error);
+            console.log("An error occured", error);
         }
     };
 
@@ -67,7 +68,7 @@ const MovieForm = ({ onClose }) => {
         <Modal.Header closeButton>
             <Modal.Title>Add Movie</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="movie-form">
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="title">
                     <Form.Label>Title</Form.Label>
