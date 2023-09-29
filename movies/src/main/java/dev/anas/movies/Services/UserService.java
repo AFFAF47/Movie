@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Autowired
-    IUserRepository userRepository;
+    private IUserRepository userRepository;
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
@@ -23,6 +23,10 @@ public class UserService {
 
     public Optional<User> getUserByPhone(String phone){
         return userRepository.getUserByPhone(phone);
+    }
+
+    public User addUser(User user){
+        return userRepository.save(user);
     }
 
 }
