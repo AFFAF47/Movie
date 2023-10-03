@@ -39,4 +39,25 @@ public class UserService {
     public boolean deleteUser(String email){
         return userRepository.deleteByEmail(email);
     }
+
+    public Optional<User> updateUser(User updatedUser, String email){
+        Optional<User> currentUser = userRepository.getUserByEmail(email);
+        if(currentUser.isPresent()){
+            User userToUpdate = currentUser.get();
+            if(!updatedUser.getUserName().isEmpty()){
+                userToUpdate.setUserName(updatedUser.getUserName());
+            }
+            if(!updatedUser.getPassword().isEmpty()){
+                userToUpdate.setPassword(updatedUser.getPassword());
+            }
+            if(!updatedUser.getPhone().isEmpty()){
+                userToUpdate.setPhone(updatedUser.getPhone());
+            }
+            User savedUser = userRepository.save(userToUpdate);
+            return Optional.of(savedUser);
+        }else{
+            return Optional.empty();
+        }
+    }
+
 }

@@ -41,6 +41,16 @@ public class UserController {
         return new ResponseEntity<User>(userService.addUser(user), HttpStatus.CREATED).getBody();
     }
 
+    @PutMapping("/updateuser/{email}")
+    public ResponseEntity<Optional<User>> updateUser(@RequestBody User updatedUser, @PathVariable String email){
+        Optional<User> updated = userService.updateUser(updatedUser, email);
+        if(updated.isPresent()){
+            return new ResponseEntity<Optional<User>>(updated, HttpStatus.OK);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/delete/{email}")
     public boolean delUser(@PathVariable String email){
         return userService.deleteUser(email);
