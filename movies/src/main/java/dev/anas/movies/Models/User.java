@@ -26,7 +26,7 @@ public class User {
     @NonNull
     private String password;
 
-    private String isAdmin;
+    private String Role;
 
     public ObjectId getId() {
         return id;
@@ -68,12 +68,12 @@ public class User {
         this.password = password;
     }
 
-    public String getIsAdmin() {
-        return isAdmin;
+    public String getRole() {
+        return Role;
     }
 
-    public void setIsAdmin(String isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setRole(String role) {
+        Role = role;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", isAdmin='" + isAdmin + '\'' +
+                ", Role='" + Role + '\'' +
                 '}';
     }
 }
