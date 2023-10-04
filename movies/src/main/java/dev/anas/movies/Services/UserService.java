@@ -39,14 +39,17 @@ public class UserService {
         Optional<User> currentUser = userRepository.getUserByEmail(email);
         if(currentUser.isPresent()){
             User userToUpdate = currentUser.get();
-            if(!updatedUser.getUserName().isEmpty()){
-                userToUpdate.setUserName(updatedUser.getUserName());
+            if(!updatedUser.getFirstname().isEmpty()){
+                userToUpdate.setFirstname(updatedUser.getFirstname());
             }
             if(!updatedUser.getPassword().isEmpty()){
                 userToUpdate.setPassword(updatedUser.getPassword());
             }
-            if(!updatedUser.getPhone().isEmpty()){
-                userToUpdate.setPhone(updatedUser.getPhone());
+            if(!updatedUser.getSecondname().isEmpty()){
+                userToUpdate.setSecondname(updatedUser.getSecondname());
+            }
+            if(!updatedUser.getEmail().isEmpty()){
+                userToUpdate.setEmail(updatedUser.getEmail());
             }
             User savedUser = userRepository.save(userToUpdate);
             return Optional.of(savedUser);
