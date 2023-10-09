@@ -28,6 +28,11 @@ public class UserService {
     }
 
     public User addUser(@NonNull User user){
+        if(!user.getIsAdmin().equals("true")){
+            user.setIsAdmin("false");
+        }else{
+            user.setIsAdmin("true");
+        }
         return userRepository.save(user);
     }
 
