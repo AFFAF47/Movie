@@ -9,8 +9,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.management.relation.Role;
-
 @Document(collection = "users")
 @Data
 @AllArgsConstructor
@@ -20,29 +18,38 @@ public class User {
     @Id
     private ObjectId id;
     @NonNull
-    private String firstname;
-    private String secondname;
+    private String userName;
+    private String phone;
     @Indexed(unique = true)
     private String email;
+
     @NonNull
     private String password;
-    @NonNull
-    private Role role;
 
-    public String getFirstname() {
-        return firstname;
+    private String Role;
+
+    public ObjectId getId() {
+        return id;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
-    public String getSecondname() {
-        return secondname;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setSecondname(String secondname) {
-        this.secondname = secondname;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -61,22 +68,23 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public String getRole() {
+        return Role;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRole(String role) {
+        Role = role;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "firstname='" + firstname + '\'' +
-                ", secondname='" + secondname + '\'' +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
+                ", Role='" + Role + '\'' +
                 '}';
     }
 }
